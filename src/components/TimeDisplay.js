@@ -54,14 +54,7 @@ const TimeDisplay = () => {
 
   return (
     <div>
-      {/* {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <div>Server Time: {serverTime}</div>
-          <div>Client Time Difference: {clientTime}</div>
-        </>
-      )} */}
+
       {loading ? (
   <div>Loading...</div>
 ) : (
