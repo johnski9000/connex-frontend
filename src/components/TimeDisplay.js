@@ -5,6 +5,8 @@ const TimeDisplay = () => {
   const [serverTime, setServerTime] = useState('');
   const [clientTime, setClientTime] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
 
   const fetchServerTime = async () => {
     try {
@@ -16,9 +18,11 @@ const TimeDisplay = () => {
       });
       setServerTime(response.data.serverTime);
       setLoading(false);
+      setError(null)
     } catch (error) {
       console.error('Error fetching server time:', error);
       setLoading(false);
+      setError(error)
     }
   };
 
@@ -50,14 +54,26 @@ const TimeDisplay = () => {
 
   return (
     <div>
-      {loading ? (
+      {/* {loading ? (
         <div>Loading...</div>
       ) : (
         <>
           <div>Server Time: {serverTime}</div>
           <div>Client Time Difference: {clientTime}</div>
         </>
-      )}
+      )} */}
+      {loading ? (
+  <div>Loading...</div>
+) : (
+  error ? (
+    <div>Request Access</div>
+  ) : (
+    <>
+      <div>Server Time: {serverTime}</div>
+      <div>Client Time Difference: {clientTime}</div>
+    </>
+  )
+)}
     </div>
   );
 };
